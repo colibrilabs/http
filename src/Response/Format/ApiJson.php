@@ -33,10 +33,10 @@ class ApiJson extends Format
     
     $response = !is_array($response) ? [$response] : $response;
     
-    $response['response_info'] = [
-      'code' => $statusCode,
-      'status' => $this->response->getStatusMessage($statusCode),
-      'memory' => $this->memoryUsage(),
+    $response['responseDebug'] = [
+      'statusCode' => $statusCode,
+      'statusMessage' => $this->response->getStatusMessage($statusCode),
+      'memoryUsage' => $this->memoryUsage(),
     ];
     
     return $response;
