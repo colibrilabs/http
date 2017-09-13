@@ -17,22 +17,74 @@ class Response implements ResponseInterface
 {
   
   const RESPONSE_RAW = 'raw';
-  
   const RESPONSE_JSON = 'json';
-  
   const RESPONSE_HTML = 'html';
-  
   const RESPONSE_API_JSON = 'api_json';
-  
   const RESPONSE_CUSTOM = 'custom';
   
   const CONTENT_HTML = 'text/html';
-  
   const CONTENT_PLAIN = 'text/plain';
-  
   const CONTENT_JSON = 'application/json';
-  
   const CONTENT_XML = 'text/xml';
+  
+  const INFO_CONTINUE = 100;
+  const INFO_SWITCHING_PROTOCOL = 101;
+  const INFO_PROCESSING = 102;
+  const SUCCESS_OK = 200;
+  const SUCCESS_CREATED = 201;
+  const SUCCESS_ACCEPTED = 202;
+  const SUCCESS_NON_AUTHORITATIVE_INFO = 203;
+  const SUCCESS_NO_CONTENT = 204;
+  const SUCCESS_RESET_CONTENT = 205;
+  const SUCCESS_PARTIAL_CONTENT = 206;
+  const SUCCESS_MULTI_STATUS = 207;
+  const SUCCESS_ALREADY_REPORTED = 208;
+  const REDIRECT_MULT_CHOICE = 300;
+  const REDIRECT_MOVED = 301;
+  const REDIRECT_FOUND = 302;
+  const REDIRECT_SEE_OTHER = 303;
+  const REDIRECT_NOT_MODIFIED = 304;
+  const REDIRECT_USE_PROXY = 305;
+  const REDIRECT_UNUSED = 306;
+  const REDIRECT_REDIRECT_TEMP = 307;
+  const REDIRECT_REDIRECT_PERMANENT = 308;
+  const ERROR_BAD_REQUEST = 400;
+  const ERROR_UNAUTHORIZED = 401;
+  const ERROR_PAYMENT_REQUIRED = 402;
+  const ERROR_FORBIDDEN = 403;
+  const ERROR_NOT_FOUND = 404;
+  const ERROR_METHOD_NOT_ALLOWED = 405;
+  const ERROR_NOT_ACCEPTABLE = 406;
+  const ERROR_AUTHENTICATE_WITH_PROXY = 407;
+  const ERROR_REQUEST_TIMEOUT = 408;
+  const ERROR_CONFLICT = 409;
+  const ERROR_REQUESTED_CONTENT_GONE = 410;
+  const ERROR_CONTENT_LENGTH_REQUIRED = 411;
+  const ERROR_PRECONDITION_FAILED = 412;
+  const ERROR_PAYLOAD_TOO_LARGE = 413;
+  const ERROR_URI_TOO_LONG = 414;
+  const ERROR_UNSUPPORTED_MEDIA_TYPE = 415;
+  const ERROR_REQUESTED_RANGE = 416;
+  const ERROR_EXPECTATION_FAILED = 417;
+  const ERROR_IAM_TEAPOT = 418;
+  const ERROR_MISDIRECTED_REQUEST = 421;
+  const ERROR_UNPROCESSABLE_ENTITY = 422;
+  const ERROR_LOCKED = 423;
+  const ERROR_FAILED_DEPENDENCY = 424;
+  const ERROR_UPGRADE_REQUIRED = 426;
+  const ERROR_PRECONDITION_REQUIRED = 428;
+  const ERROR_TOO_MANY_REQUESTS = 429;
+  const ERROR_REQUEST_HEADERS_TOO_LONG = 431;
+  const SERVER_INTERNAL_ERROR = 500;
+  const SERVER_NOT_IMPLEMENTED = 501;
+  const SERVER_BAD_GATEWAY = 502;
+  const SERVER_SERVICE_UNAVAILABLE = 503;
+  const SERVER_GATEWAY_TIMEOUT = 504;
+  const SERVER_HTTP_VERSION_NOT_SUPPORTED = 505;
+  const SERVER_VARIANT_ALSO_NEGOTIATES_1 = 506;
+  const SERVER_VARIANT_ALSO_NEGOTIATES_2 = 507;
+  const SERVER_LOOP_DETECTED = 508;
+  const SERVER_NETWORK_AUTHENTICATION_REQUIRED = 511;
   
   /**
    * @var array
@@ -98,6 +150,18 @@ class Response implements ResponseInterface
   }
   
   /**
+   * @param string $name
+   * @param $value
+   * @return $this
+   */
+  public function setHeader($name = '', $value)
+  {
+    $this->headers->set($name, $value, true);
+    
+    return $this;
+  }
+  
+  /**
    * @return CookiesInterface
    */
   public function getCookies()
@@ -112,18 +176,6 @@ class Response implements ResponseInterface
   public function setCookies(CookiesInterface $cookies)
   {
     $this->cookies = $cookies;
-    
-    return $this;
-  }
-  
-  /**
-   * @param string $name
-   * @param $value
-   * @return $this
-   */
-  public function setHeader($name = '', $value)
-  {
-    $this->headers->set($name, $value, true);
     
     return $this;
   }
@@ -446,67 +498,68 @@ class Response implements ResponseInterface
   public function getStatusMessage($statusCode = 0)
   {
     $statusCodes = [
-      100 => "Continue",
-      101 => "Switching Protocols",
-      102 => "Processing",
-      200 => "OK",
-      201 => "Created",
-      202 => "Accepted",
-      203 => "Non-Authoritative Information",
-      204 => "No Content",
-      205 => "Reset Content",
-      206 => "Partial Content",
-      207 => "Multi-status",
-      208 => "Already Reported",
-      300 => "Multiple Choices",
-      301 => "Moved Permanently",
-      302 => "Found",
-      303 => "See Other",
-      304 => "Not Modified",
-      305 => "Use Proxy",
-      306 => "Switch Proxy",
-      307 => "Temporary Redirect",
-      400 => "Bad Request",
-      401 => "Unauthorized",
-      402 => "Payment Required",
-      403 => "Forbidden",
-      404 => "Not Found",
-      405 => "Method Not Allowed",
-      406 => "Not Acceptable",
-      407 => "Proxy Authentication Required",
-      408 => "Request Time-out",
-      409 => "Conflict",
-      410 => "Gone",
-      411 => "Length Required",
-      412 => "Precondition Failed",
-      413 => "Request Entity Too Large",
-      414 => "Request-URI Too Large",
-      415 => "Unsupported Media Type",
-      416 => "Requested range not satisfiable",
-      417 => "Expectation Failed",
-      418 => "I'm a teapot",
-      422 => "Unprocessable Entity",
-      423 => "Locked",
-      424 => "Failed Dependency",
-      425 => "Unordered Collection",
-      426 => "Upgrade Required",
-      428 => "Precondition Required",
-      429 => "Too Many Requests",
-      431 => "Request Header Fields Too Large",
-      500 => "Internal Server Error",
-      501 => "Not Implemented",
-      502 => "Bad Gateway",
-      503 => "Service Unavailable",
-      504 => "Gateway Time-out",
-      505 => "HTTP Version not supported",
-      506 => "Variant Also Negotiates",
-      507 => "Insufficient Storage",
-      508 => "Loop Detected",
-      511 => "Network Authentication Required",
+      static::INFO_CONTINUE => "Continue",
+      static::INFO_SWITCHING_PROTOCOL => "Switching Protocols",
+      static::INFO_PROCESSING => "Processing",
+      static::SUCCESS_OK => "OK",
+      static::SUCCESS_CREATED => "Created",
+      static::SUCCESS_ACCEPTED => "Accepted",
+      static::SUCCESS_NON_AUTHORITATIVE_INFO => "Non-Authoritative Information",
+      static::SUCCESS_NO_CONTENT => "No Content",
+      static::SUCCESS_RESET_CONTENT => "Reset Content",
+      static::SUCCESS_PARTIAL_CONTENT => "Partial Content",
+      static::SUCCESS_MULTI_STATUS => "Multi-status",
+      static::SUCCESS_ALREADY_REPORTED => "Already Reported",
+      static::REDIRECT_MULT_CHOICE => "Multiple Choices",
+      static::REDIRECT_MOVED => "Moved Permanently",
+      static::REDIRECT_FOUND => "Found",
+      static::REDIRECT_SEE_OTHER => "See Other",
+      static::REDIRECT_NOT_MODIFIED => "Not Modified",
+      static::REDIRECT_USE_PROXY => "Use Proxy",
+      static::REDIRECT_UNUSED => "Switch Proxy",
+      static::REDIRECT_REDIRECT_TEMP => "Temporary Redirect",
+      static::REDIRECT_REDIRECT_PERMANENT => "Permanent Redirect",
+      static::ERROR_BAD_REQUEST => "Bad Request",
+      static::ERROR_UNAUTHORIZED => "Unauthorized",
+      static::ERROR_PAYMENT_REQUIRED => "Payment Required",
+      static::ERROR_FORBIDDEN => "Forbidden",
+      static::ERROR_NOT_FOUND => "Not Found",
+      static::ERROR_METHOD_NOT_ALLOWED => "Method Not Allowed",
+      static::ERROR_NOT_ACCEPTABLE => "Not Acceptable",
+      static::ERROR_AUTHENTICATE_WITH_PROXY => "Proxy Authentication Required",
+      static::ERROR_REQUEST_TIMEOUT => "Request Time-out",
+      static::ERROR_CONFLICT => "Conflict",
+      static::ERROR_REQUESTED_CONTENT_GONE => "Gone",
+      static::ERROR_CONTENT_LENGTH_REQUIRED => "Length Required",
+      static::ERROR_PRECONDITION_FAILED => "Precondition Failed",
+      static::ERROR_PAYLOAD_TOO_LARGE => "Request Entity Too Large",
+      static::ERROR_URI_TOO_LONG => "Request-URI Too Large",
+      static::ERROR_UNSUPPORTED_MEDIA_TYPE => "Unsupported Media Type",
+      static::ERROR_REQUESTED_RANGE => "Requested range not satisfiable",
+      static::ERROR_EXPECTATION_FAILED => "Expectation Failed",
+      static::ERROR_IAM_TEAPOT => "I'm a teapot",
+      static::ERROR_MISDIRECTED_REQUEST => "Misdirected Request",
+      static::ERROR_UNPROCESSABLE_ENTITY => "Unprocessable Entity",
+      static::ERROR_LOCKED => "Locked",
+      static::ERROR_FAILED_DEPENDENCY => "Failed Dependency",
+      static::ERROR_UPGRADE_REQUIRED => "Upgrade Required",
+      static::ERROR_PRECONDITION_REQUIRED => "Precondition Required",
+      static::ERROR_TOO_MANY_REQUESTS => "Too Many Requests",
+      static::ERROR_REQUEST_HEADERS_TOO_LONG => "Request Header Fields Too Large",
+      static::SERVER_INTERNAL_ERROR => "Internal Server Error",
+      static::SERVER_NOT_IMPLEMENTED => "Not Implemented",
+      static::SERVER_BAD_GATEWAY => "Bad Gateway",
+      static::SERVER_SERVICE_UNAVAILABLE => "Service Unavailable",
+      static::SERVER_GATEWAY_TIMEOUT => "Gateway Time-out",
+      static::SERVER_HTTP_VERSION_NOT_SUPPORTED => "HTTP Version not supported",
+      static::SERVER_VARIANT_ALSO_NEGOTIATES_1 => "Variant Also Negotiates",
+      static::SERVER_VARIANT_ALSO_NEGOTIATES_2 => "Insufficient Storage",
+      static::SERVER_LOOP_DETECTED => "Loop Detected",
+      static::SERVER_NETWORK_AUTHENTICATION_REQUIRED => "Network Authentication Required",
     ];
     
     if (!isset($statusCodes[$statusCode])) {
-      throw new Exception("The incorrect status code. In this code [$statusCode] there is no message");
+      throw new Exception("The incorrect response status code passed. For code ({$statusCode}) don't have any message");
     }
     
     return $statusCodes[$statusCode];
