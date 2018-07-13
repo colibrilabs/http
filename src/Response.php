@@ -141,7 +141,8 @@ class Response implements ResponseInterface
   public function __construct($content = null, $statusCode = 200, $statusMessage = null)
   {
     $this->setHeaders(new Headers());
-    $this->setHeader('X-Greetings-From', 'colibriphp-http');
+    $this->setHeader('X-Php-Lib', 'colibriLabs/http');
+    $this->setHeader('X-Author', 'Ivan Hontarenko');
     $this->setBodyFormat(self::RESPONSE_HTML);
     
     if ($content !== null) {
