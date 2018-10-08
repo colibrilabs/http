@@ -1,5 +1,5 @@
 {
-  "name": "colibrilabs/http",
+  "name": "subapp/http",
   "description": "Http Library",
   "keywords": ["php http","http", "colibri http"],
   "authors": [
