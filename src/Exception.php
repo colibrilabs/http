@@ -1,10 +1,10 @@
 <?php
 
-namespace Colibri\Http;
+namespace Subapp\Http;
 
 /**
  * Class Exception
- * @package Colibri\Http
+ * @package Subapp\Http
  */
 class Exception extends \Exception
 {

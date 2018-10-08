@@ -1,10 +1,10 @@
 <?php
 
-namespace Colibri\Http\Response;
+namespace Subapp\Http\Response;
 
 /**
  * Class Headers
- * @package Colibri\Http\Response
+ * @package Subapp\Http\Response
  */
 class Headers implements HeadersInterface
 {

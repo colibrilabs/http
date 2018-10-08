@@ -1,12 +1,12 @@
 <?php
 
-namespace Colibri\Http;
+namespace Subapp\Http;
 
-use Colibri\Http\Request\File;
+use Subapp\Http\Request\File;
 
 /**
  * Class Request
- * @package Colibri\Http
+ * @package Subapp\Http
  */
 class Request implements RequestInterface
 {

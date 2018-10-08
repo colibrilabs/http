@@ -1,10 +1,10 @@
 <?php
 
-namespace Colibri\Http\Request;
+namespace Subapp\Http\Request;
 
 /**
  * Class File
- * @package Colibri\Http\Request
+ * @package Subapp\Http\Request
  */
 class File
 {

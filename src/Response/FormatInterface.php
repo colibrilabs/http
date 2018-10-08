@@ -1,6 +1,6 @@
 <?php
 
-namespace Colibri\Http\Response;
+namespace Subapp\Http\Response;
 
 interface FormatInterface
 {

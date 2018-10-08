@@ -1,18 +1,18 @@
 <?php
 
-namespace Colibri\Http\Response\Format;
+namespace Subapp\Http\Response\Format;
 
-use Colibri\Http\Response\Format;
+use Subapp\Http\Response\Format;
 
 /**
  * Class ApiJson
- * @package Colibri\Http\Response\Format
+ * @package Subapp\Http\Response\Format
  */
 class ApiJson extends Format
 {
   
   /**
-   * @return \Colibri\Http\Response
+   * @return \Subapp\Http\Response
    */
   public function process()
   {
@@ -24,7 +24,7 @@ class ApiJson extends Format
   
   /**
    * @return array|null
-   * @throws \Colibri\Http\Exception
+   * @throws \Subapp\Http\Exception
    */
   private function createResponseBody()
   {

@@ -1,18 +1,18 @@
 <?php
 
-namespace Colibri\Http;
+namespace Subapp\Http;
 
-use Colibri\Http\Cookies\Cookie;
+use Subapp\Http\Cookies\Cookie;
 
 /**
  * Class Cookies
- * @package Colibri\Http
+ * @package Subapp\Http
  */
 class Cookies implements CookiesInterface
 {
   
   /**
-   * @var \Colibri\Http\Cookies\Cookie[]
+   * @var \Subapp\Http\Cookies\Cookie[]
    */
   protected $cookies = [];
   

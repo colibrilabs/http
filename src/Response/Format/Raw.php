@@ -1,12 +1,12 @@
 <?php
 
-namespace Colibri\Http\Response\Format;
+namespace Subapp\Http\Response\Format;
 
-use Colibri\Http\Response\Format;
+use Subapp\Http\Response\Format;
 
 /**
  * Class Raw
- * @package Colibri\Http\Response\Format
+ * @package Subapp\Http\Response\Format
  */
 class Raw extends Format
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Colibri\Http;
+namespace Subapp\Http;
 
 interface RequestInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Colibri\Http;
+namespace Subapp\Http;
 
 /**
  * Interface CookiesInterface
- * @package Colibri\Http
+ * @package Subapp\Http
  */
 interface CookiesInterface
 {

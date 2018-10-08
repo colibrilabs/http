@@ -1,12 +1,12 @@
 <?php
 
-namespace Colibri\Http\Response;
+namespace Subapp\Http\Response;
 
-use Colibri\Http\Response;
+use Subapp\Http\Response;
 
 /**
  * Class Format
- * @package Colibri\Http\Response
+ * @package Subapp\Http\Response
  */
 abstract class Format implements FormatInterface
 {

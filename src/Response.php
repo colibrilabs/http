@@ -1,17 +1,17 @@
 <?php
 
-namespace Colibri\Http;
+namespace Subapp\Http;
 
-use Colibri\Http\Response\Format\ApiJson;
-use Colibri\Http\Response\Format\Html;
-use Colibri\Http\Response\Format\Json;
-use Colibri\Http\Response\Format\Raw;
-use Colibri\Http\Response\FormatInterface;
-use Colibri\Http\Response\Headers;
+use Subapp\Http\Response\Format\ApiJson;
+use Subapp\Http\Response\Format\Html;
+use Subapp\Http\Response\Format\Json;
+use Subapp\Http\Response\Format\Raw;
+use Subapp\Http\Response\FormatInterface;
+use Subapp\Http\Response\Headers;
 
 /**
  * Class Response
- * @package Colibri\Http
+ * @package Subapp\Http
  */
 class Response implements ResponseInterface
 {
@@ -118,7 +118,7 @@ class Response implements ResponseInterface
   protected $content = null;
   
   /**
-   * @var \Colibri\Http\Response\HeadersInterface
+   * @var \Subapp\Http\Response\HeadersInterface
    */
   protected $headers = null;
   
@@ -267,7 +267,7 @@ class Response implements ResponseInterface
   }
   
   /**
-   * @return \Colibri\Http\Response\HeadersInterface
+   * @return \Subapp\Http\Response\HeadersInterface
    */
   public function getHeaders()
   {
@@ -275,7 +275,7 @@ class Response implements ResponseInterface
   }
   
   /**
-   * @param \Colibri\Http\Response\Headers $headers
+   * @param \Subapp\Http\Response\Headers $headers
    * @return static
    */
   public function setHeaders(Headers $headers)
