@@ -141,8 +141,9 @@ class Response implements ResponseInterface
   public function __construct($content = null, $statusCode = 200, $statusMessage = null)
   {
     $this->setHeaders(new Headers());
-    $this->setHeader('X-Php-Lib', 'colibriLabs/http');
+    $this->setHeader('X-Php-Lib', 'Subapp/Http');
     $this->setHeader('X-Author', 'Ivan Hontarenko');
+    $this->setHeader('X-Author-Email', 'ihontarenko@gmail.com');
     $this->setBodyFormat(self::RESPONSE_HTML);
     
     if ($content !== null) {
@@ -155,7 +156,7 @@ class Response implements ResponseInterface
    * @param $value
    * @return $this
    */
-  public function setHeader($name = '', $value)
+  public function setHeader($name, $value)
   {
     $this->headers->set($name, $value, true);
     
